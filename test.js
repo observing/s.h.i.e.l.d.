@@ -8,6 +8,12 @@ describe('s.h.i.e.l.d.', function () {
     assume(shield).is.a('function');
   });
 
+  it('returns false no string or array is given', function () {
+    assume(shield('www.host.com', {})).is.false();
+    assume(shield('www.host.com', new Date)).is.false();
+    assume(shield('www.host.com', true)).is.false();
+  });
+
   [
     {
       host: 'http://example.com',
@@ -16,8 +22,8 @@ describe('s.h.i.e.l.d.', function () {
     },
     {
       host: 'www.example.com',
-      yes: ['*.example.com'],
-      no: ['gmail.example.com', 'foo.bar.com']
+      yes: ['*.example.com', [/www\.example\.com/], ['*']],
+      no: ['gmail.example.com', 'foo.bar.com', ['foo.bar.com']]
     },
     {
       host: 'foo.bar.example.com',
