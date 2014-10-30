@@ -17,7 +17,7 @@ module.exports = function shield(host, list) {
   // consistent URL structure to work against. We remove the host because don't
   // want to take it in to consideration.
   //
-  host = original(host).replace(/^(http|ws)s?\:\/\//, '');
+  host = original(host).replace(/^((http|ws)s?\:\/\/)/, '');
 
   if ('string' === typeof list) list = list.split(/[\,|\s]+/);
   if (!Array.isArray(list)) return false;
@@ -46,14 +46,8 @@ module.exports = function shield(host, list) {
                    .replace(/\*/g, '([^\.]+)');
 
     //
-    // Force leading.
-    //
-    if (origin.charAt(0) !== '^') {
-      origin = '^'+ origin;
-    }
-
-    //
-    // Force trailing.
+    // Force trailing, we don't need to force a ^ because the sub-domains should
+    // be left flexible so we can support multiple levels
     //
     origin = origin.replace(/(\\*)(.)$/, function replace(s, b, c){
       return c !== '$' || b.length % 2 === 1

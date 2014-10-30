@@ -21,7 +21,8 @@ describe('s.h.i.e.l.d.', function () {
     },
     {
       host: 'foo.bar.example.com',
-      yes: ['*.*.example.com', '*.example.com', 'foo.*.example.com', '*.bar.example.com']
+      yes: ['*.*.example.com', '*.example.com', 'foo.*.example.com', '*.bar.example.com'],
+      no: ['hello.*.example.com', '*.*.yahoo.com']
     }
   ].forEach(function each(spec) {
     describe(spec.host, function () {
