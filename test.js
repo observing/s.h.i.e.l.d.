@@ -10,19 +10,28 @@ describe('s.h.i.e.l.d.', function () {
 
   [
     {
-      host: 'http://google.com',
-      yes: ['google.com', '*', 'http://google.com', 'https://google.com'],
-      no:  ['yahoo.com', '*.yahoo.com', 'google.com:8080']
+      host: 'http://example.com',
+      yes: ['example.com', '*', 'http://example.com', 'https://example.com', 'example.*'],
+      no:  ['yahoo.com', '*.yahoo.com', 'example.com:8080', 'example.nl']
+    },
+    {
+      host: 'www.example.com',
+      yes: ['*.example.com'],
+      no: ['gmail.example.com', 'foo.bar.com']
+    },
+    {
+      host: 'foo.bar.example.com',
+      yes: ['*.*.example.com', '*.example.com', 'foo.*.example.com', '*.bar.example.com']
     }
   ].forEach(function each(spec) {
     describe(spec.host, function () {
-      spec.yes.forEach(function yea(yes) {
+      if (spec.yes) spec.yes.forEach(function yea(yes) {
         it('should match with '+ yes, function () {
           assume(shield(spec.host, yes)).is.true();
         });
       });
 
-      spec.no.forEach(function nope(no) {
+      if (spec.no) spec.no.forEach(function nope(no) {
         it('should NOT match with '+ no, function () {
           assume(shield(spec.host, no)).is.false();
         });

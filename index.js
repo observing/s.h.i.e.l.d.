@@ -14,9 +14,10 @@ module.exports = function shield(host, list) {
   //
   // Ensure that we got a valid "host" which actually follows the origin
   // specifications from the web. This makes it easier to validate as we have
-  // consistent URL structure to work against.
+  // consistent URL structure to work against. We remove the host because don't
+  // want to take it in to consideration.
   //
-  host = original(host);
+  host = original(host).replace(/^(http|ws)s?\:\/\//, '');
 
   if ('string' === typeof list) list = list.split(/[\,|\s]+/);
   if (!Array.isArray(list)) return false;
@@ -41,12 +42,15 @@ module.exports = function shield(host, list) {
     // Transform the given origin in to RegExp that we can use for testing.
     //
     origin = origin.replace(/([.+?^=!:${}()|\[\]\/\\])/g, '\\$1')
+                   .replace(/^\^?(http|ws)s?\\\:.{4}/, '')
                    .replace(/\*/g, '([^\.]+)');
 
     //
     // Force leading.
     //
-    if (origin.charAt(0) !== '^') origin = '^'+ origin;
+    if (origin.charAt(0) !== '^') {
+      origin = '^'+ origin;
+    }
 
     //
     // Force trailing.
