@@ -1,7 +1,7 @@
 {
   "name": "s.h.i.e.l.d.",
   "version": "0.0.0",
-  "description": "Origin protection",
+  "description": "Stategic Host Inspection, Extermination, List-Enforcement Division: Origin validation",
   "main": "index.js",
   "scripts": {
     "test": "mocha --reporter spec --ui bdd test.js",
