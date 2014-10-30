@@ -1,6 +1,6 @@
 {
   "name": "s.h.i.e.l.d.",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Stategic Host Inspection, Extermination, List-Enforcement Division: Origin validation",
   "main": "index.js",
   "scripts": {
