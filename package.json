@@ -1,0 +1,31 @@
+{
+  "name": "s.h.i.e.l.d.",
+  "version": "0.0.0",
+  "description": "Origin protection",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:observing/s.h.i.e.l.d..git"
+  },
+  "keywords": [
+    "origin",
+    "host",
+    "validation",
+    "detection",
+    "enformcement",
+    "extermination",
+    "division"
+  ],
+  "author": "Arnout Kazemier",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/observing/s.h.i.e.l.d./issues"
+  },
+  "homepage": "https://github.com/observing/s.h.i.e.l.d.",
+  "dependencies": {
+    "original": "0.0.4"
+  }
+}
